@@ -1,43 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WeekendBio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-[#f9f2e7] text-gray-900">
-    <main class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">
-        Make Smarter Investing Decisions — Without the Noise
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeekendBio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#f9f2e7] text-gray-900 antialiased">
+
+  <main class="min-h-screen flex items-center justify-center px-6">
+    <div class="max-w-xl w-full text-center">
+
+      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+        Investing, minus the noise.
       </h1>
-      <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-8">
-        WeekendBio breaks down stocks & crypto into simple, repeatable systems.
-        No hype. No signals. Just a clear process.
+
+      <p class="text-lg text-gray-700 mb-10">
+        I break down stocks & crypto using simple frameworks — no hype,
+        no signals, no promises.
       </p>
-      <a
-        href="#"
-        class="inline-block bg-black text-white text-lg px-8 py-4 rounded-2xl shadow-lg hover:opacity-90"
+
+      <!-- EMAIL FORM -->
+      <form
+        action="PUT_YOUR_FORMSPREE_LINK_HERE"
+        method="POST"
+        class="flex flex-col sm:flex-row gap-4"
       >
-        Get the Free Checklist
-      </a>
-      <p class="text-sm text-gray-500 mt-4">Free • No spam • Cancel anytime</p>
-    </main>
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="you@email.com"
+          class="flex-1 px-5 py-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black"
+        />
 
-    <section class="max-w-6xl mx-auto px-6 pb-20 grid md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-2xl p-6 shadow-md flex gap-4">
-        ✔ Stock & crypto evaluation checklist
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-md flex gap-4">
-        ✔ Risk management framework
-      </div>
-      <div class="bg-white rounded-2xl p-6 shadow-md flex gap-4">
-        ✔ Tools I personally use
-      </div>
-    </section>
+        <button
+          type="submit"
+          class="px-6 py-4 rounded-xl bg-black text-white font-medium hover:opacity-90"
+        >
+          Get the checklist
+        </button>
+      </form>
 
-    <footer class="bg-gray-100 py-8 text-center text-sm text-gray-600">
-      © 2026 WeekendBio — Educational content only
-    </footer>
-  </body>
+      <p class="text-sm text-gray-500 mt-4">
+        Free • No spam • Educational only
+      </p>
+
+      <div class="mt-14 grid gap-4 text-left">
+        <div class="bg-white rounded-2xl p-5 shadow-sm">
+          ✔ How I evaluate stocks & crypto
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm">
+          ✔ Risk rules that stop stupid losses
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-sm">
+          ✔ Tools I actually use
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="py-6 text-center text-xs text-gray-400">
+    © 2026 WeekendBio · Not financial advice
+  </footer>
+
+</body>
 </html>
