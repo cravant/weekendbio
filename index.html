@@ -45,10 +45,11 @@
     <div class="modal-box">
       <h2>Join WeekendBio</h2>
       <p>Get emails that actually make you money.</p>
-      <form action="https://formspree.io/f/mwvpgbnw" method="POST">
+      <form id="emailForm">
         <input type="email" name="email" placeholder="you@email.com" required />
-        <button type="submit" class="primary-btn">Subscribe</button>
+          <button type="submit" class="primary-btn">Subscribe</button>
       </form>
+      <p id="successMsg" style="display:none; color:#22d3ee; margin-top:10px;">✅ Thanks! You’re subscribed.</p>
       <span class="close" onclick="closeModal()">Not now</span>
     </div>
   </div>
