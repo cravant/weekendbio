@@ -8,15 +8,13 @@
 </head>
 <body>
 
-<!-- Background Candles -->
-<div class="candles-bg">
-  <canvas id="candlesCanvas"></canvas>
-</div>
+<!-- Background Chart -->
+<canvas id="chartCanvas"></canvas>
 
 <!-- Newsletter Popup -->
 <div class="popup" id="popup">
-  <h2>Join the WeekendBio Newsletter</h2>
-  <p>Weekly stock insights, trends, and plays.</p>
+  <h2>WeekendBio</h2>
+  <p>Weekly market insights & trend breakdowns.</p>
 
   <form id="popup-form">
     <input type="email" name="email" placeholder="you@email.com" required />
@@ -26,27 +24,26 @@
   <span class="popup-close" onclick="closePopup()">×</span>
 </div>
 
-<!-- Main Content -->
 <main>
   <section class="hero">
     <h1>WeekendBio</h1>
-    <p>Stocks. Trends. Market Psychology.</p>
+    <p>Market intelligence for the weekend trader.</p>
   </section>
 
   <section class="newsletter">
-    <h2>Get Market Moves First</h2>
-    <p>No spam. No fluff. Just signal.</p>
+    <h2>Get the Edge</h2>
+    <p>No spam. Just signal.</p>
 
     <form id="newsletter-form">
       <input type="email" name="email" placeholder="you@email.com" required />
-      <button type="submit">Join Newsletter</button>
+      <button type="submit">Subscribe</button>
     </form>
 
-    <p class="success" id="success-msg">You're in. Check your inbox.</p>
+    <span id="success-msg">You're in. Welcome.</span>
   </section>
 
   <section class="discord">
-    <a href="https://discord.gg/8EhbrVfJpv" target="_blank" class="discord-btn">
+    <a href="https://discord.gg/8EhbrVfJpv" target="_blank">
       Join the Discord
     </a>
   </section>
