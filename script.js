@@ -1,37 +1,34 @@
-// Popup logic
+// Popup
 setTimeout(() => {
   document.getElementById("popup").style.display = "block";
-}, 1200);
+}, 1400);
 
 function closePopup() {
   document.getElementById("popup").style.display = "none";
 }
 
-// Formspree AJAX (NO redirect)
-const FORM_ENDPOINT = "https://formspree.io/f/mwvpgbnw";
+// Formspree (AJAX, no redirect)
+const ENDPOINT = "https://formspree.io/f/mwvpgbnw";
 
-function handleForm(form) {
-  form.addEventListener("submit", async (e) => {
+function wireForm(form) {
+  form.addEventListener("submit", async e => {
     e.preventDefault();
-    const email = form.email.value;
-
-    await fetch(FORM_ENDPOINT, {
+    await fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email })
+      body: JSON.stringify({ email: form.email.value })
     });
-
     document.getElementById("success-msg").style.display = "block";
     closePopup();
     form.reset();
   });
 }
 
-handleForm(document.getElementById("popup-form"));
-handleForm(document.getElementById("newsletter-form"));
+wireForm(document.getElementById("popup-form"));
+wireForm(document.getElementById("newsletter-form"));
 
-// Candle Animation
-const canvas = document.getElementById("candlesCanvas");
+/* ===== SMOOTH CANDLE CHART ===== */
+const canvas = document.getElementById("chartCanvas");
 const ctx = canvas.getContext("2d");
 
 function resize() {
@@ -41,16 +38,52 @@ function resize() {
 resize();
 window.addEventListener("resize", resize);
 
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+const candles = [];
+const candleWidth = 8;
+const spacing = 18;
+let offset = 0;
 
-  for (let i = 0; i < 90; i++) {
-    const x = Math.random() * canvas.width;
-    const base = canvas.height * 0.7;
-    const h = Math.random() * 90 + 20;
-    ctx.fillStyle = Math.random() > 0.5 ? "#22c55e" : "#ef4444";
-    ctx.fillRect(x, base - h, 6, h);
-  }
+for (let i = 0; i < 120; i++) {
+  candles.push({
+    open: Math.random() * 100 + 100,
+    close: Math.random() * 100 + 100,
+    high: Math.random() * 120 + 140,
+    low: Math.random() * 80 + 80
+  });
+}
+
+function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.translate(-offset, 0);
+
+  candles.forEach((c, i) => {
+    const x = i * spacing + canvas.width / 2;
+    const mid = canvas.height * 0.6;
+    const scale = 0.6;
+
+    const openY = mid - c.open * scale;
+    const closeY = mid - c.close * scale;
+    const highY = mid - c.high * scale;
+    const lowY = mid - c.low * scale;
+
+    ctx.strokeStyle = "#38bdf8";
+    ctx.beginPath();
+    ctx.moveTo(x + candleWidth/2, highY);
+    ctx.lineTo(x + candleWidth/2, lowY);
+    ctx.stroke();
+
+    ctx.fillStyle = c.close > c.open ? "#34d399" : "#ef4444";
+    ctx.fillRect(
+      x,
+      Math.min(openY, closeY),
+      candleWidth,
+      Math.abs(openY - closeY) || 2
+    );
+  });
+
+  ctx.setTransform(1,0,0,1,0,0);
+  offset += 0.25;
   requestAnimationFrame(draw);
 }
+
 draw();
