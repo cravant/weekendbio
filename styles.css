@@ -1,60 +1,146 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', sans-serif; background: #020617; color: #f8fafc; }
-
-/* Navigation */
-.nav { display: flex; justify-content: space-between; padding: 24px 40px; position: relative; z-index: 2; }
-.logo { font-weight: 900; font-size: 1.4rem; }
-.nav-btn { color: #22d3ee; text-decoration: none; font-weight: 600; }
-
-/* Hero */
-.hero { position: relative; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; }
-.hero canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-.hero-content { max-width: 800px; margin: 0 auto; text-align: center; padding: 100px 20px; position: relative; z-index: 1; }
-.hero h1 { font-size: 3rem; margin-bottom: 20px; }
-.hero p { font-size: 1.2rem; color: #cbd5f5; margin-bottom: 40px; }
-
-/* Buttons */
-.primary-btn, .secondary-btn {
-  padding: 16px 32px; border-radius: 14px; border: none; font-weight: 700; cursor: pointer; transition: transform .2s;
-}
-.primary-btn { background: linear-gradient(135deg, #6366f1, #22d3ee); color: #020617; }
-.primary-btn:hover { transform: scale(1.05); }
-.secondary-btn { background: transparent; color: #22d3ee; border: 1px solid #334155; }
-.secondary-btn:hover { transform: scale(1.05); }
-
-/* Features */
-.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 80px 40px; }
-.feature { background: #020617; border: 1px solid #1e293b; padding: 32px; border-radius: 16px; text-align: center; }
-
-/* CTA */
-.cta { text-align: center; padding: 80px 20px; }
-
-/* Modal */
-.modal { position: fixed; inset: 0; background: rgba(2,6,23,.9); display: flex; align-items: center; justify-content: center; }
-.modal.hidden { display: none; }
-.modal-box { background: #020617; padding: 40px; border-radius: 20px; max-width: 400px; width: 100%; text-align: center; }
-.modal-box input { width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #334155; background: #020617; color: #f8fafc; margin-bottom: 20px; }
-.close { display: inline-block; margin-top: 14px; font-size: .9rem; color: #64748b; cursor: pointer; }
-
-footer { text-align: center; padding: 24px; color: #64748b; }
-
-/* Responsive fixes */
-@media (max-width: 600px) {
-  .hero h1 { font-size: 2.2rem; }
-  .hero p { font-size: 1rem; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
 }
 
-/* === BACKGROUND CANDLES === */
+body {
+  color: white;
+  background: #0a0a0f;
+  overflow-x: hidden;
+}
+
+/* Background */
 .candles-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, #0a0a0f, #111118);
-  overflow: hidden;
+  background: linear-gradient(180deg, #050509, #0d0d14);
 }
 
 #candlesCanvas {
   width: 100%;
   height: 100%;
   opacity: 0.25;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 420px;
+  background: #0f172a;
+  padding: 24px;
+  border-radius: 14px;
+  z-index: 10;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+}
+
+.popup h2 {
+  margin-bottom: 10px;
+}
+
+.popup p {
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.popup form {
+  display: flex;
+  gap: 10px;
+}
+
+.popup input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+}
+
+.popup button {
+  padding: 12px 18px;
+  background: #22c55e;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Sections */
+.hero {
+  padding: 140px 20px 80px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+}
+
+.hero p {
+  opacity: .8;
+  margin-top: 10px;
+}
+
+.newsletter {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.newsletter form {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.newsletter input {
+  padding: 14px;
+  min-width: 260px;
+  border-radius: 10px;
+  border: none;
+}
+
+.newsletter button {
+  padding: 14px 24px;
+  border-radius: 10px;
+  border: none;
+  background: #22c55e;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.success {
+  margin-top: 16px;
+  color: #22c55e;
+  display: none;
+}
+
+/* Discord */
+.discord {
+  padding: 80px 20px 120px;
+  text-align: center;
+}
+
+.discord-btn {
+  display: inline-block;
+  padding: 18px 36px;
+  background: #5865F2;
+  color: white;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
