@@ -43,3 +43,18 @@ footer { text-align: center; padding: 24px; color: #64748b; }
   .hero h1 { font-size: 2.2rem; }
   .hero p { font-size: 1rem; }
 }
+
+/* === BACKGROUND CANDLES === */
+.candles-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #0a0a0f, #111118);
+  overflow: hidden;
+}
+
+#candlesCanvas {
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+}
