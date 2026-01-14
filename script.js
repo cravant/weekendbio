@@ -1,40 +1,56 @@
-const modal = document.getElementById('modal');
+// Popup logic
+setTimeout(() => {
+  document.getElementById("popup").style.display = "block";
+}, 1200);
 
-function openModal() {
-  modal.classList.remove('hidden');
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
 }
 
-function closeModal() {
-  modal.classList.add('hidden');
-  localStorage.setItem('wb_seen', 'true');
-}
+// Formspree AJAX (NO redirect)
+const FORM_ENDPOINT = "https://formspree.io/f/mwvpgbnw";
 
-if (localStorage.getItem('wb_seen')) {
-  modal.classList.add('hidden');
-}
-const emailForm = document.getElementById("emailForm");
-const successMsg = document.getElementById("successMsg");
+function handleForm(form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = form.email.value;
 
-emailForm.addEventListener("submit", async (e) => {
-  e.preventDefault(); // stop redirect
-  const formData = new FormData(emailForm);
-
-  try {
-    const response = await fetch("https://formspree.io/f/mwvpgbnw", {
+    await fetch(FORM_ENDPOINT, {
       method: "POST",
-      body: formData,
-      headers: { "Accept": "application/json" }
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email })
     });
 
-    if (response.ok) {
-      successMsg.style.display = "block";
-      emailForm.reset();
-      // optionally close modal automatically after 2 seconds
-      setTimeout(() => modal.classList.add("hidden"), 2000);
-    } else {
-      alert("Oops, something went wrong. Try again!");
-    }
-  } catch (err) {
-    alert("Network error. Try again!");
+    document.getElementById("success-msg").style.display = "block";
+    closePopup();
+    form.reset();
+  });
+}
+
+handleForm(document.getElementById("popup-form"));
+handleForm(document.getElementById("newsletter-form"));
+
+// Candle Animation
+const canvas = document.getElementById("candlesCanvas");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = 0; i < 90; i++) {
+    const x = Math.random() * canvas.width;
+    const base = canvas.height * 0.7;
+    const h = Math.random() * 90 + 20;
+    ctx.fillStyle = Math.random() > 0.5 ? "#22c55e" : "#ef4444";
+    ctx.fillRect(x, base - h, 6, h);
   }
-});
+  requestAnimationFrame(draw);
+}
+draw();
